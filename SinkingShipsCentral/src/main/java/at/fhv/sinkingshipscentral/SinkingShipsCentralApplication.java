@@ -15,19 +15,20 @@ public class SinkingShipsCentralApplication {
         SpringApplication.run(SinkingShipsCentralApplication.class, args);
     }
 
-@Bean
-public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
-    return builder.routes()
-            .route("player-service", r -> r.path("/player/**")
-                    .uri("lb://sinking-ships-player"))
-            .route("game-service", r -> r.path("/game/**")
-                    .uri("lb://sinking-ships-game"))
-            .route("ship-service", r -> r.path("/ship/**")
-                    .uri("lb://sinking-ships-ship"))
-            // Route for Swagger API docs aggregation
-            .route(r -> r.path("/v3/api-docs/**")
-                    .filters(f -> f.rewritePath("/v3/api-docs/(?<service>.*)", "/${service}/v3/api-docs"))
-                    .uri("lb://sinking-ships-player")) // Any service (player/game/ship) will work here
-            .build();
-}
+    @Bean
+    public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
+        return builder.routes()
+                // Existing service routes
+                .route("player-service", r -> r.path("/player/**")
+                        .uri("lb://sinking-ships-player"))
+                .route("game-service", r -> r.path("/game/**")
+                        .uri("lb://sinking-ships-game"))
+                .route("ship-service", r -> r.path("/ship/**")
+                        .uri("lb://sinking-ships-ship"))
+                // Updated Swagger JSON route
+                .route(r -> r.path("/v3/api-docs/**")
+                        .filters(f -> f.rewritePath("/v3/api-docs/(?<service>.*)", "/${service}/v3/api-docs"))
+                        .uri("lb://sinking-ships-player")) // Target service (player, game, or ship)
+                .build();
+    }
 }
