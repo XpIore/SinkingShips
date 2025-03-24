@@ -3,10 +3,7 @@ package at.fhv.sinkingshipsgame.controller;
 import at.fhv.sinkingshipsgame.entities.Game;
 import at.fhv.sinkingshipsgame.services.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,7 +24,7 @@ public class GameController {
     }
 
     @PostMapping("/addPlayers")
-    public String addPlayers(Long gameId, Long playerOneId, Long playerTwoId) {
+    public String addPlayers(@RequestParam Long gameId, @RequestParam Long playerOneId, @RequestParam Long playerTwoId) {
         gameService.setPlayers(gameId, playerOneId, playerTwoId);
         return "Player one: " + playerOneId + ", and Player two: " + playerTwoId + ", have been added";
     }

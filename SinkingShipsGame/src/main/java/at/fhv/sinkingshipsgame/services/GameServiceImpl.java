@@ -3,6 +3,7 @@ package at.fhv.sinkingshipsgame.services;
 import at.fhv.sinkingshipsgame.entities.Game;
 import at.fhv.sinkingshipsgame.repositories.GameRepository;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class GameServiceImpl implements GameService {
 
    private final GameRepository gameRepository;

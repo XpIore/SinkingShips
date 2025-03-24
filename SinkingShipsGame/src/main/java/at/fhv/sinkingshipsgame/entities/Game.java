@@ -19,11 +19,11 @@ public class Game {
     private Long id;
 
     @Column(name="PLAYER_ONE_ID")
-    private Long PlayerOneId;
+    private Long playerOneId;
 
     @Column(name="PLAYER_TWO_ID")
-    private Long PlayerTwoId;
+    private Long playerTwoId;
 
     @Column(name="MAP")
-    private String Map;
+    private String map;
 }
