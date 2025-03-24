@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @Tag(name = "Ship")
-@RequestMapping("/Ship")
+@RequestMapping("/ship")
 public class ShipController {
 
     private final ShipService shipService;

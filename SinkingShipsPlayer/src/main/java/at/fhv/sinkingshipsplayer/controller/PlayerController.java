@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @Tag(name ="Player")
-@RequestMapping("/Player")
+@RequestMapping("/player")
 public class PlayerController {
     private final PlayerService playerService;
 

@@ -8,26 +8,18 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="EurekaServer" />
+        <module name="SinkingShipsCentral" />
       </profile>
       <profile name="Annotation profile for SinkingShipsShip" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <processorPath>
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/unknown/lombok-unknown.jar" />
-        </processorPath>
-        <module name="SinkingShipsPlayer" />
-        <module name="SinkingShipsShip" />
-        <module name="SinkingShipsGame" />
-      </profile>
-      <profile name="Annotation profile for SinkingShipsCentral" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/unknown/lombok-unknown.jar" />
         </processorPath>
-        <module name="SinkingShipsCentral" />
+        <module name="SinkingShipsShip" />
+        <module name="SinkingShipsPlayer" />
+        <module name="SinkingShipsGame" />
       </profile>
     </annotationProcessing>
   </component>
