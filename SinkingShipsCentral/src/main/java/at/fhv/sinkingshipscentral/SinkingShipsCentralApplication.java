@@ -18,9 +18,18 @@ public class SinkingShipsCentralApplication {
     @Bean
     public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
         return builder.routes()
-                .route(r -> r.path("/v3/api-docs/**")
-                        .filters(f -> f.rewritePath("/v3/api-docs/(?<service>.*)", "/${service}/v3/api-docs"))
-                        .uri("lb://sinking-ships-player")) // Replace with dynamic routing (see notes below)
+                // Route for Player Service API Docs
+                .route(r -> r.path("/v3/api-docs/player")
+                        .filters(f -> f.rewritePath("/v3/api-docs/player", "/v3/api-docs"))
+                        .uri("lb://sinking-ships-player"))
+                // Route for Game Service API Docs
+                .route(r -> r.path("/v3/api-docs/game")
+                        .filters(f -> f.rewritePath("/v3/api-docs/game", "/v3/api-docs"))
+                        .uri("lb://sinking-ships-game")) // Fix service name here
+                // Route for Ship Service API Docs
+                .route(r -> r.path("/v3/api-docs/ship")
+                        .filters(f -> f.rewritePath("/v3/api-docs/ship", "/v3/api-docs"))
+                        .uri("lb://sinking-ships-ship"))
                 .build();
     }
 }
