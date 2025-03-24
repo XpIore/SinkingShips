@@ -20,13 +20,13 @@ public class SinkingShipsCentralApplication {
         return builder.routes()
                 .route("game-api-docs", r -> r.path("/v3/api-docs/game")
                         .filters(f -> f.rewritePath("/v3/api-docs/game", "/v3/api-docs"))
-                        .uri("lb://sinking-ships-game"))
+                        .uri("http://localhost:8081"))
                 .route("ship-api-docs", r -> r.path("/v3/api-docs/ship")
                         .filters(f -> f.rewritePath("/v3/api-docs/ship", "/v3/api-docs"))
-                        .uri("lb://sinking-ships-ship"))
+                        .uri("http://localhost:8083"))
                 .route("player-api-docs", r -> r.path("/v3/api-docs/player")
                         .filters(f -> f.rewritePath("/v3/api-docs/player", "/v3/api-docs"))
-                        .uri("lb://sinking-ships-player"))
+                        .uri("http://localhost:8082"))
                 .build();
     }
 }
