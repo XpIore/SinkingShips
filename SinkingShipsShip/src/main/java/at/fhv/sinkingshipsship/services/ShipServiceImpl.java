@@ -2,12 +2,14 @@ package at.fhv.sinkingshipsship.services;
 
 import at.fhv.sinkingshipsship.entities.Ship;
 import at.fhv.sinkingshipsship.repositories.ShipRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@Transactional
 public class ShipServiceImpl implements ShipService {
 
     private final ShipRepository shipRepository;

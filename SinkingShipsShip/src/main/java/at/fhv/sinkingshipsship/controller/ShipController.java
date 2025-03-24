@@ -4,10 +4,7 @@ import at.fhv.sinkingshipsship.entities.Ship;
 import at.fhv.sinkingshipsship.services.ShipService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,7 +26,7 @@ public class ShipController {
     }
 
     @GetMapping("/findByGame")
-    public List<Ship> findShipsByGameId(Long gameId) {
+    public List<Ship> findShipsByGameId(@RequestParam Long gameId) {
         return shipService.findShipsByGameId(gameId);
     }
 }

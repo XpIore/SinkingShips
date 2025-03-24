@@ -33,8 +33,4 @@ public class Ship {
     @Column(name = "HIT")
     private boolean hit;
 
-    //lombok issues
-    public Long getId() {
-        return id;
-    }
 }

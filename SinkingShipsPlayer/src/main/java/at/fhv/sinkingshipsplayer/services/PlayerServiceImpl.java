@@ -5,11 +5,13 @@ import at.fhv.sinkingshipsplayer.repositories.PlayerRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class PlayerServiceImpl implements PlayerService {
     private final PlayerRepository playerRepository;
 

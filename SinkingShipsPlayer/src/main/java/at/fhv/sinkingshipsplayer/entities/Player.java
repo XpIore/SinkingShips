@@ -4,8 +4,10 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
+@Setter
 @Entity
 @Table(name = "PLAYER")
 @NoArgsConstructor
@@ -19,8 +21,4 @@ public class Player {
     @Column(name = "PLAYER_NAME", nullable = false)
     private String playerName;
 
-    //Lombock issue
-    public void setPlayerName(String playerName) {
-        this.playerName = playerName;
-    }
 }
