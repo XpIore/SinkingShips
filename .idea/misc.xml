@@ -8,6 +8,7 @@
         <option value="$PROJECT_DIR$/SinkingShipsShip/pom.xml" />
         <option value="$PROJECT_DIR$/SinkingShipsPlayer/pom.xml" />
         <option value="$PROJECT_DIR$/SinkingShipsCentral/pom.xml" />
+        <option value="$PROJECT_DIR$/EurekaServer/pom.xml" />
       </list>
     </option>
   </component>
