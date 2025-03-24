@@ -15,15 +15,27 @@ public class SinkingShipsCentralApplication {
         SpringApplication.run(SinkingShipsCentralApplication.class, args);
     }
 
-    @Bean
-    public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
-        return builder.routes()
-                .route("player-service", r -> r.path("/player/**")
-                        .uri("lb://SINKING-SHIPS-PLAYER"))
-                .route("game-service", r -> r.path("/game/**")
-                        .uri("lb://SINKING-SHIPS-GAME"))
-                .route("ship-service", r -> r.path("/ship/**")
-                        .uri("lb://SINKING-SHIPS-SHIP"))
-                .build();
-    }
+//    @Bean
+//    public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
+//        return builder.routes()
+//                .route("player-service", r -> r.path("/player/**")
+//                        .uri("lb://SINKING-SHIPS-PLAYER"))
+//                .route("game-service", r -> r.path("/game/**")
+//                        .uri("lb://SINKING-SHIPS-GAME"))
+//                .route("ship-service", r -> r.path("/ship/**")
+//                        .uri("lb://SINKING-SHIPS-SHIP"))
+//                .build();
+//    }
+@Bean
+public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
+    return builder.routes()
+            // Existing routes...
+            .route("player-service", r -> r.path("/player/**")
+                    .uri("lb://sinking-ships-player")) // Lowercase to match Eureka registration
+            .route("game-service", r -> r.path("/game/**")
+                    .uri("lb://sinking-ships-game"))
+            .route("ship-service", r -> r.path("/ship/**")
+                    .uri("lb://sinking-ships-ship"))
+            .build();
+}
 }

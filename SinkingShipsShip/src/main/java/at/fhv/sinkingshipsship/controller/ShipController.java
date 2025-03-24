@@ -21,7 +21,7 @@ public class ShipController {
     }
 
     @PostMapping("/create")
-    public String createShip(Long gameId, Long playerId, Integer shipXCoordinate, Integer shipYCoordinate) {
+    public String createShip(@RequestParam Long gameId, @RequestParam Long playerId, @RequestParam Integer shipXCoordinate, @RequestParam Integer shipYCoordinate) {
         return shipService.createShip(gameId, playerId, shipXCoordinate, shipYCoordinate);
     }
 

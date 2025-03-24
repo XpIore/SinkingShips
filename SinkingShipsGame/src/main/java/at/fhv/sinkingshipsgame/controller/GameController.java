@@ -30,14 +30,14 @@ public class GameController {
     }
 
     @PostMapping("/updateMap")
-    public String updateMap(Long gameId, String map) {
+    public String updateMap(@RequestParam Long gameId, @RequestParam String map) {
         gameService.updateMap(gameId, map);
         return "Map updated";
     }
 
     //Get Mappings
     @GetMapping("/getOne")
-    public Game getOneGame(Long gameId) {
+    public Game getOneGame(@RequestParam Long gameId) {
         return gameService.findGameById(gameId);
     }
 
