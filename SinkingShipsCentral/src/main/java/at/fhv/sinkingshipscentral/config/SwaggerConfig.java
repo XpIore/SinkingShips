@@ -1,5 +1,7 @@
 package at.fhv.sinkingshipscentral.config;
 
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Info;
 import org.springdoc.core.models.GroupedOpenApi;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -8,26 +10,18 @@ import org.springframework.context.annotation.Configuration;
 public class SwaggerConfig {
 
     @Bean
-    public GroupedOpenApi playerApi() {
-        return GroupedOpenApi.builder()
-                .group("Player Service")
-                .pathsToMatch("/player/**")
-                .build();
+    public OpenAPI customOpenAPI() {
+        return new OpenAPI()
+                .info(new Info()
+                        .title("Sinking Ships Gateway API")
+                        .version("1.0"));
     }
 
     @Bean
-    public GroupedOpenApi gameApi() {
+    public GroupedOpenApi publicApi() {
         return GroupedOpenApi.builder()
-                .group("Game Service")
-                .pathsToMatch("/game/**")
-                .build();
-    }
-
-    @Bean
-    public GroupedOpenApi shipApi() {
-        return GroupedOpenApi.builder()
-                .group("Ship Service")
-                .pathsToMatch("/ship/**")
+                .group("gateway")
+                .pathsToMatch("/**")
                 .build();
     }
 }
