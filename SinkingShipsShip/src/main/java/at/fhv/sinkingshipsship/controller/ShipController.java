@@ -25,8 +25,8 @@ public class ShipController {
         return shipService.createShip(gameId, playerId, shipXCoordinate, shipYCoordinate);
     }
 
-    @GetMapping("/findByGame")
-    public List<Ship> findShipsByGameId(@RequestParam Long gameId) {
-        return shipService.findShipsByGameId(gameId);
+    @GetMapping("/findByGameId{gameId}")
+    public List<Ship> findShipsByGameId(@PathVariable String gameId) {
+        return shipService.findShipsByGameId(Long.valueOf(gameId));
     }
 }

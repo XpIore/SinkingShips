@@ -28,6 +28,10 @@ public class ShipServiceImpl implements ShipService {
     @Override
     public String createShip(Long gameId, Long playerId, Integer shipXCoordinate, Integer shipYCoordinate) {
         Ship ship = new Ship();
+        ship.setGameId(gameId);
+        ship.setPlayerId(playerId);
+        ship.setShipXCoordinate(shipXCoordinate);
+        ship.setShipYCoordinate(shipYCoordinate);
         shipRepository.save(ship);
         return "A ship with id " + ship.getId() + " has been created";
     }
