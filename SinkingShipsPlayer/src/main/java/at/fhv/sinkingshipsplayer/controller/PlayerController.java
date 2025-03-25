@@ -1,5 +1,6 @@
 package at.fhv.sinkingshipsplayer.controller;
 
+import at.fhv.common.dto.PlayerDTO;
 import at.fhv.sinkingshipsplayer.entities.Player;
 import at.fhv.sinkingshipsplayer.services.PlayerService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @Tag(name ="Player")
@@ -30,13 +32,21 @@ public class PlayerController {
     //Get Mappings
     @GetMapping("/getAll")
     @Operation
-    public List<Player> getAllPlayers() {
-        return playerService.getAllPlayers();
+    public List<PlayerDTO> getAllPlayers() {
+        List<Player> players = playerService.getAllPlayers();
+        return players.stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+    }
+
+    private PlayerDTO convertToDTO(Player player) {
+        return new PlayerDTO(player.getId(), player.getPlayerName());
     }
 
     @GetMapping("/getOne")
     @Operation
-    public Player findPlayerById(@RequestParam Long playerId){
-        return playerService.findPlayerById(playerId);
+    public PlayerDTO findPlayerById(@RequestParam Long playerId){
+        Player player = playerService.findPlayerById(playerId);
+        return new PlayerDTO(player.getId(), player.getPlayerName());
     }
 }

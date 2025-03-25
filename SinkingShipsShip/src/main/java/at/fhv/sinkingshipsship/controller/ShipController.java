@@ -1,5 +1,6 @@
 package at.fhv.sinkingshipsship.controller;
 
+import at.fhv.common.dto.ShipDTO;
 import at.fhv.sinkingshipsship.entities.Ship;
 import at.fhv.sinkingshipsship.services.ShipService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @Tag(name = "Ship")
@@ -29,7 +31,19 @@ public class ShipController {
 
     @GetMapping("/findByGameId/{gameId}")
     @Operation
-    public List<Ship> findShipsByGameId(@PathVariable Long gameId) {
-        return shipService.findShipsByGameId(gameId);
+    public List<ShipDTO> findShipsByGameId(@PathVariable Long gameId) {
+        List<Ship> ships = shipService.findShipsByGameId(gameId);
+        return ships.stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+    }
+
+    private ShipDTO convertToDTO(Ship ship) {
+        return new ShipDTO(ship.getId(),
+                ship.getPlayerId(),
+                ship.getGameId(),
+                ship.getShipXCoordinate(),
+                ship.getShipYCoordinate(),
+                ship.isHit());
     }
 }

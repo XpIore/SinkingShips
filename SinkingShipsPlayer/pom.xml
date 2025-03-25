@@ -32,6 +32,14 @@
 
     <!--    DEPENDENCIES-->
     <dependencies>
+
+        <!--            DTOs-->
+        <dependency>
+            <groupId>at.fhv</groupId>
+            <artifactId>common</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
         <!--        JPA-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

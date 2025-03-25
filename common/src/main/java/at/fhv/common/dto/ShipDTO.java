@@ -1,6 +1,7 @@
 package at.fhv.common.dto;
 
-public record ShipDTO(Long playerId,
+public record ShipDTO(Long id,
+                      Long playerId,
                       Long gameId,
                       Integer shipXCoordinate,
                       Integer shipYCoordinate,
