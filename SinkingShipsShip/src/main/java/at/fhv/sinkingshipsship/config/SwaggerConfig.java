@@ -22,7 +22,7 @@ public class SwaggerConfig {
     public GroupedOpenApi publicApi() {
         return GroupedOpenApi.builder()
                 .group("ship")
-                .pathsToMatch("/ship/**") // Adjust based on your ShipController paths
+                .pathsToMatch("/ship/**")
                 .build();
     }
 }

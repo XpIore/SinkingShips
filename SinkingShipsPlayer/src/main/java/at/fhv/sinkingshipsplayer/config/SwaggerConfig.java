@@ -22,7 +22,7 @@ public class SwaggerConfig {
     public GroupedOpenApi publicApi() {
         return GroupedOpenApi.builder()
                 .group("player")
-                .pathsToMatch("/player/**") // Adjust based on your PlayerController paths
+                .pathsToMatch("/player/**")
                 .build();
     }
 }
