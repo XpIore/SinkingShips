@@ -18,16 +18,15 @@ public class SinkingShipsCentralApplication {
     @Bean
     public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
         return builder.routes()
-
                 .route("game-api-docs", r -> r.path("/v3/api-docs/game")
                         .filters(f -> f.rewritePath("/v3/api-docs/game", "/v3/api-docs"))
-                        .uri("http://localhost:8081")) // Ensure this points to the correct service
+                        .uri("lb://SinkingShipsGame")) // Use service name from Eureka
                 .route("player-api-docs", r -> r.path("/v3/api-docs/player")
                         .filters(f -> f.rewritePath("/v3/api-docs/player", "/v3/api-docs"))
-                        .uri("http://localhost:8082"))
+                        .uri("lb://SinkingShipsPlayer"))
                 .route("ship-api-docs", r -> r.path("/v3/api-docs/ship")
                         .filters(f -> f.rewritePath("/v3/api-docs/ship", "/v3/api-docs"))
-                        .uri("http://localhost:8083"))
+                        .uri("lb://SinkingShipsShip"))
                 .build();
     }
 }
