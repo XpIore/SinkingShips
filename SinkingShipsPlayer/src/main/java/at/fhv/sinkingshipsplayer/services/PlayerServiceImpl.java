@@ -1,6 +1,8 @@
 package at.fhv.sinkingshipsplayer.services;
 
+import at.fhv.common.dto.PlayerDTO;
 import at.fhv.sinkingshipsplayer.entities.Player;
+import at.fhv.sinkingshipsplayer.mapper.PlayerMapper;
 import at.fhv.sinkingshipsplayer.repositories.PlayerRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,15 +23,18 @@ public class PlayerServiceImpl implements PlayerService {
     }
 
     @Override
-    public List<Player> getAllPlayers() {
-        return playerRepository.findAll();
+    public List<PlayerDTO> getAllPlayers() {
+        return playerRepository.findAll()
+                .stream()
+                .map(PlayerMapper::toDTO)
+                .toList();
     }
 
     @Override
-    public Player findPlayerById(Long playerId) {
+    public PlayerDTO findPlayerById(Long playerId) {
         Optional<Player> player = playerRepository.findById(playerId);
         if (player.isPresent()) {
-            return player.get();
+            return PlayerMapper.toDTO(player.get());
         } else {
             throw new EntityNotFoundException("Player with id " + playerId + " not found");
         }

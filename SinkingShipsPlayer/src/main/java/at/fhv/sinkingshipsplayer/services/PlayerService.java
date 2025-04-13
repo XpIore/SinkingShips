@@ -1,12 +1,12 @@
 package at.fhv.sinkingshipsplayer.services;
 
-import at.fhv.sinkingshipsplayer.entities.Player;
+import at.fhv.common.dto.PlayerDTO;
 
 import java.util.List;
 
 public interface PlayerService {
 
-    List<Player> getAllPlayers();
+    List<PlayerDTO> getAllPlayers();
     String addPlayer(String playerName);
-    Player findPlayerById(Long playerId);
+    PlayerDTO findPlayerById(Long playerId);
 }
