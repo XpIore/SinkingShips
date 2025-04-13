@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/SinkingShips.iml" filepath="$PROJECT_DIR$/.idea/SinkingShips.iml" />
-      <module fileurl="file://$PROJECT_DIR$/SinkingShipsCentral/SinkingShipsCentral.iml" filepath="$PROJECT_DIR$/SinkingShipsCentral/SinkingShipsCentral.iml" />
       <module fileurl="file://$PROJECT_DIR$/SinkingShipsGame/SinkingShipsGame.iml" filepath="$PROJECT_DIR$/SinkingShipsGame/SinkingShipsGame.iml" />
       <module fileurl="file://$PROJECT_DIR$/SinkingShipsPlayer/SinkingShipsPlayer.iml" filepath="$PROJECT_DIR$/SinkingShipsPlayer/SinkingShipsPlayer.iml" />
       <module fileurl="file://$PROJECT_DIR$/SinkingShipsShip/SinkingShipsShip.iml" filepath="$PROJECT_DIR$/SinkingShipsShip/SinkingShipsShip.iml" />
