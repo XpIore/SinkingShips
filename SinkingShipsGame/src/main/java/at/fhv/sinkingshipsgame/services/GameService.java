@@ -1,14 +1,15 @@
 package at.fhv.sinkingshipsgame.services;
 
+import at.fhv.common.dto.GameDTO;
 import at.fhv.sinkingshipsgame.entities.Game;
 
 import java.util.List;
 
 public interface GameService {
-    Game findGameById(Long id);
+    GameDTO findGameById(Long id);
     String createGame();
-    List<Game> getAllGames();
-    Game setPlayers(Long gameId, Long playerOneId, Long playerTwoId);
-    Game updateMap(Long gameId, String map);
+    List<GameDTO> getAllGames();
+    GameDTO setPlayers(Long gameId, Long playerOneId, Long playerTwoId);
+    GameDTO updateMap(Long gameId, String map);
 
 }
